@@ -1,7 +1,8 @@
-import { View, Text, SafeAreaView, Image } from 'react-native'
+import { View, Text, SafeAreaView, Image, TextInput, ScrollView } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { Icon } from '@rneui/themed';
+import Category from '../components/Category';
 
 const HomeScreen = () => {
     const navigation = useNavigation()
@@ -12,27 +13,60 @@ const HomeScreen = () => {
         })
     })
   return (
-    <SafeAreaView className="mt-10"> 
-      <Text className='text-red-500'> 
-        <View className='flex-row items-center space-x-2 mx-1'> 
+    <SafeAreaView className="pt-10 bg-white"> 
+     
+        <View className='flex-row items-center space-x-2 mx-1 pb-3 pr-2'> 
             <Image
                 source={{
                     uri:'https://links.papareact.com/wru'
                 }}
                 className='h-8 w-8 bg-gray-300 rounded-full ml-4 '
             /> 
-            <View>
-                <Text className='text-xs font-bold text-gray-500'>Order Now</Text>
-                <Text className='text-lg font-bold text-black'>
+            <View className='flex-1'>
+                <Text className='text-xs font-bold text-gray-400'>Order Now</Text>
+                <Text className="text-xl font-bold flex space-x-1">
                     Check Location
                     <Icon 
-                         name='heartbeat'
-                         type='font-awesome'
+                         name='down'
+                         type='antdesign'
+                         color='#00CCBB'
+                         size={15} 
                     />
                 </Text>
             </View>
+               <Icon
+                  name='user'
+                  type='evilicon'
+                  color='#00CCBB'
+                  size={35}
+               />
         </View>
-      </Text>
+
+        <View className='flex-row items-center space-x-2 pb-2 mx-4 '>
+          <View className='flex-row space-x-2 items-center flex-1 bg-gray-200 p-1 px-3 rounded'>
+          <Icon
+                  name='search'
+                  type='font-awesome'
+                  color='gray'
+                  size={20}
+           />
+           <TextInput 
+                  placeholder='Search'  
+                  keyboardType='default'
+           />
+          </View>
+          <Icon
+                  name='sliders'
+                  type='feather'
+                  color='#00CCBB'
+                  size={20}
+           />
+        </View>
+
+        <ScrollView className='bg-gray-100'>
+          <Category />
+        </ScrollView>
+      
     </SafeAreaView>
   )
 }
